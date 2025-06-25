@@ -10,10 +10,11 @@ def registro():
     return jsonify(*registrar_usuario(datos.get("usuario"), datos.get("contraseña")))
 
 
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     datos = request.json
-    return jsonify(*verificar_login(datos.get("usuario"), datos.get("contraseña")))
+    respuesta, status = verificar_login(datos.get('usuario'), datos.get('contraseña'))
+    return jsonify(respuesta), status
 
 
 @app.route("/tareas", methods=["GET"])

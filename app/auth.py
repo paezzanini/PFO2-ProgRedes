@@ -18,13 +18,19 @@ def registrar_usuario(usuario, contrasena):
         return {'error': 'El usuario ya existe'}, 409
 
 def verificar_login(usuario, contrasena):
+    if not usuario or not contrasena:
+        return {'error': 'Faltan datos'}, 400
+
     conn = sqlite3.connect('tareas.db')
     cursor = conn.cursor()
     cursor.execute('SELECT contrasena FROM usuarios WHERE usuario = ?', (usuario,))
     resultado = cursor.fetchone()
     conn.close()
 
-    if resultado and check_password_hash(resultado[0], contrasena):
-        return {'mensaje': 'Inicio de sesión exitoso'}, 201
+    if not resultado:
+        return {'error': 'El usuario no existe'}, 404
+
+    if check_password_hash(resultado[0], contrasena):
+        return {'mensaje': 'Inicio de sesión exitoso'}, 200
     else:
         return {'error': 'Credenciales inválidas'}, 401
