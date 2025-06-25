@@ -23,6 +23,16 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 
 ---
 
+## Backlog de funcionalidades pendientes
+
+- [ ] Reorganizar la estructura del proyecto con carpetas (ej. `/app`)
+- [ ] Agregar confirmación de contraseña en el registro (validación mínima)
+- [ ] Mostrar una página HTML más personalizada en `/tareas` (usuario logueado)
+- [ ] Agregar pruebas básicas con `curl` o `requests` para validar endpoints
+- [ ] Documentar el uso del cliente en consola
+
+---
+
 ## Instalación y ejecución (Windows)
 
 ### 1. Clonar el repositorio
@@ -70,6 +80,15 @@ Falta Agregar
 
 ---
 
+## Requisitos técnicos
+
+- Python 3.8 o superior
+- Flask
+- SQLite3
+- Werkzeug (para hashing de contraseñas)
+
+---
+
 ## Respuestas conceptuales
 
 ### ¿Por qué hashear contraseñas?
@@ -91,22 +110,5 @@ Una de las ventajas más grandes es que es fácil de usar y muy rápida para des
 También es ideal para practicar o hacer trabajos prácticos, porque no depende de conexiones externas ni servicios adicionales. Basta con importar la librería en Python y ya se puede empezar a guardar datos.
 
 En resumen, SQLite es simple, funciona bien para este tipo de proyectos educativos o personales, y permite centrarse en la lógica del programa sin preocuparse por configurar un sistema de base de datos más complejo.
-
----
-
-## Requisitos técnicos
-
-- Python 3.8 o superior
-- Flask
-- SQLite3
-- Werkzeug (para hashing de contraseñas)
-
----
-
-## Buenas prácticas
-
-- Validar entradas del usuario
-- No exponer errores internos en la API
-- Usar tokens para seguridad en producción
 
 ---
