@@ -25,11 +25,13 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 
 ## Backlog de funcionalidades pendientes
 
-- [ ] Reorganizar la estructura del proyecto con carpetas (ej. `/app`)
-- [ ] Agregar confirmación de contraseña en el registro (validación mínima)
-- [ ] Mostrar una página HTML más personalizada en `/tareas` (usuario logueado)
+- [X] Reorganizar la estructura del proyecto con carpetas (ej. `/app`)
+- [X] Agregar confirmación de contraseña en el registro (validación mínima)
+- [X] Mostrar una página HTML más personalizada en `/tareas` (usuario logueado)
 - [ ] Agregar pruebas básicas con `curl` o `requests` para validar endpoints
 - [ ] Documentar el uso del cliente en consola
+- [ ] Revisar flujo en Error en el login: Credenciales inválidas
+
 
 ---
 
@@ -57,19 +59,37 @@ pip install -r requirements.txt
 python servidor.py
 ```
 
-### 5. Ejecutar el cliente en consola
+### 5. Ejecutar el cliente en consola en otra consola
 ```bash
 python cliente.py
 ```
 
 #### Ejemplo de Uso
 
+##### Usuario no registrado no deseo registrarme
+
+
+##### Usuario no registrado deseo registrarme
 Usuario: (vacio)
 Contraseña: (vacio)
 
 ❌ Error en el login. ¿Deseás registrarte?
 s/n: s
 ✅ Usuario registrado con éxito. Ahora podés iniciar sesión.
+
+Se ejecuta nuevamente el cliente y ya permite loguearse con los datos de registro
+
+##### Usuario no registrado confirmacion de pass erronea
+ea
+
+##### Usuario no registrado confirmacion de pass correcta
+
+##### Usuario registrado - credenciales invalidas
+
+##### Usuario registrado - login exitoso
+
+
+
 
 ## Capturas de pantalla
 
