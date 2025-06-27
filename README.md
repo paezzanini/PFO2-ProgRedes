@@ -11,7 +11,10 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 - Inicio de sesión (`POST /login`)
 - Visualización de bienvenida (`GET /tareas`)
 - Contraseñas protegidas (hashed)
+- Verifica credenciales y permite acceso a las tareas
 - Base de datos persistente (SQLite)
+- Ejemplos de registro guardados en la base de datos
+![Captura de registros de usuarios con contraseñas hasheadas](/screenshots/7.png)
 
 ---
 
@@ -20,6 +23,7 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 - Iniciar sesión con usuario y contraseña (`POST /login`)
 - Registrarse si el login falla (`POST /registro`)
 - Ver tareas si el login fue exitoso (`GET /tareas`)
+- Tiene un límite de 3 intentos fallidos de ingreso de contraseñas incorrectas, luego cierra el cliente.
 
 ---
 
@@ -28,10 +32,9 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 - [X] Reorganizar la estructura del proyecto con carpetas (ej. `/app`)
 - [X] Agregar confirmación de contraseña en el registro (validación mínima)
 - [X] Mostrar una página HTML más personalizada en `/tareas` (usuario logueado)
-- [ ] Agregar pruebas básicas con `curl` o `requests` para validar endpoints
-- [ ] Documentar el uso del cliente en consola
-- [ ] Revisar flujo en Error en el login: Credenciales inválidas
-
+- [X] Documentar el uso del cliente en consola
+- [X] Revisar flujo en Error en el login: Credenciales inválidas
+- [X] Limitar la cantidad a 3 la cantidad de intentos fallidos antes de cerrar el cliente
 
 ---
 
@@ -66,37 +69,69 @@ python cliente.py
 
 #### Ejemplo de Uso
 
-##### Usuario no registrado no deseo registrarme
+##### Usuario no registrado y no acepto registrarme
+![Usuario no registrado y no acepto registrarme](/screenshots/1.png)
+Usuario: fernando
+Contraseña: 123456
+❌ El usuario no existe.
+¿Deseás registrarte? (s/n): n
 
-
-##### Usuario no registrado deseo registrarme
-Usuario: (vacio)
-Contraseña: (vacio)
-
-❌ Error en el login. ¿Deseás registrarte?
-s/n: s
-✅ Usuario registrado con éxito. Ahora podés iniciar sesión.
+##### Usuario no registrado y acepto registrarme
+![Usuario no registrado y acepto registrarme](/screenshots/2.png)
+Usuario: fernando
+Contraseña: 123456
+❌ El usuario no existe.
+¿Deseás registrarte? (s/n): s
+Confirmá la contraseña: 123456
+✅ Usuario registrado con éxito. Ahora podés iniciar sesión
 
 Se ejecuta nuevamente el cliente y ya permite loguearse con los datos de registro
 
-##### Usuario no registrado confirmacion de pass erronea
-ea
-
-##### Usuario no registrado confirmacion de pass correcta
-
-##### Usuario registrado - credenciales invalidas
+##### Usuario registrado - Credenciales invalidas - Limita a 3 intentos fallidos antes de cerrar el cliente
+![Usuario registrado y acepto registrarme](/screenshots/3.png)
+Usuario: fernando
+Contraseña: 123465
+❌ Contraseña incorrecta.
+Intento 1/3. Intente nuevamente.
+Contraseña: 1234
+❌ Contraseña incorrecta.
+Intento 2/3. Intente nuevamente.
+Contraseña: 143
+❌ Contraseña incorrecta.
+❌ Demasiados intentos fallidos. Cerrando.
 
 ##### Usuario registrado - login exitoso
+![Usuario registrado y acepto registrarme](/screenshots/4.png)
+Usuario: fernando
+Contraseña: 123456
+✅ ¡Login exitoso!
+TAREAS:
+<!DOCTYPE html>
+<html>
+<head><title>Tareas</title></head>
+<body>
+    <h1>Bienvenido, fernando</h1>
+    <p>Acá vas a ver tus tareas (¡próximamente!).</p>
+</body>
+</html>
 
+##### Usuario no registrado confirmacion de pass erronea
+![Usuario registrado y acepto registrarme](/screenshots/5.png)
+Usuario: fernando1
+Contraseña: 12345
+❌ El usuario no existe.
+¿Deseás registrarte? (s/n): s
+Confirmá la contraseña: 1234
+❌ Las contraseñas no coinciden.
 
-
-
-## Capturas de pantalla
-
-Falta Agregar
-- Registro exitoso
-- Login correcto/incorrecto
-- Vista de bienvenida tras logueo
+##### Usuario no registrado confirmacion de pass correcta
+![Usuario registrado y acepto registrarme](/screenshots/6.png)
+Usuario: fernando1
+Contraseña: 12345
+❌ El usuario no existe.
+¿Deseás registrarte? (s/n): s
+Confirmá la contraseña: 12345
+✅ Usuario registrado con éxito. Ahora podés iniciar sesión
 
 ---
 
