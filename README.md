@@ -14,7 +14,7 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 - Verifica credenciales y permite acceso a las tareas
 - Base de datos persistente (SQLite)
 - Ejemplos de registro guardados en la base de datos
-![Captura de registros de usuarios con contraseñas hasheadas](/screenshots/7.png)
+![Captura de registros de usuarios con contraseñas hasheadas](/docs/screenshots/7.png)
 
 ---
 
@@ -86,7 +86,7 @@ python cliente.py
 #### Ejemplos de Uso
 
 ##### Usuario no registrado y no acepto registrarme
-![Usuario no registrado y no acepto registrarme](/screenshots/1.png)
+![Usuario no registrado y no acepto registrarme](/docs/screenshots/1.png)
 ```text
 Usuario: fernando
 Contraseña: 123456
@@ -95,7 +95,7 @@ Contraseña: 123456
 ```
 
 ##### Usuario no registrado y acepto registrarme
-![Usuario no registrado y acepto registrarme](/screenshots/2.png)
+![Usuario no registrado y acepto registrarme](/docs/screenshots/2.png)
 ```text
 Usuario: fernando
 Contraseña: 123456
@@ -108,7 +108,7 @@ Se ejecuta nuevamente el cliente y ya permite loguearse con los datos de registr
 ```
 
 ##### Usuario registrado - Credenciales invalidas - Limita a 3 intentos fallidos antes de cerrar el cliente
-![Usuario registrado y acepto registrarme](/screenshots/3.png)
+![Usuario registrado y acepto registrarme](/docs/screenshots/3.png)
 ```text
 Usuario: fernando
 Contraseña: 123465
@@ -123,7 +123,7 @@ Contraseña: 143
 ```
 
 ##### Usuario registrado - login exitoso
-![Usuario registrado y acepto registrarme](/screenshots/4.png)
+![Usuario registrado y acepto registrarme](/docs/screenshots/4.png)
 ```text
 Usuario: fernando
 Contraseña: 123456
@@ -140,7 +140,7 @@ TAREAS:
 ```
 
 ##### Usuario no registrado confirmacion de pass erronea
-![Usuario registrado y acepto registrarme](/screenshots/5.png)
+![Usuario registrado y acepto registrarme](/docs/screenshots/5.png)
 ```text
 Usuario: fernando1
 Contraseña: 12345
@@ -151,7 +151,7 @@ Confirmá la contraseña: 1234
 ```
 
 ##### Usuario no registrado confirmacion de pass correcta
-![Usuario registrado y acepto registrarme](/screenshots/6.png)
+![Usuario registrado y acepto registrarme](/docs/screenshots/6.png)
 ```text
 Usuario: fernando1
 Contraseña: 12345
