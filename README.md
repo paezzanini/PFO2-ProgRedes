@@ -27,6 +27,12 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 
 ---
 
+**Repositorio Público**
+
+[Ver en GitHub](https://github.com/paezzanini/PFO2-ProgRedes)
+
+---
+
 **Demo / Documentación:** [Ver en GitHub Pages](https://paezzanini.github.io/PFO2-ProgRedes/)
 
 Este proyecto implementa una aplicación de consola en Python que se comunica con un servidor Flask (API REST). Por su naturaleza, **no puede desplegarse en GitHub Pages**, ya que esta plataforma solo permite publicar contenido estático (HTML, CSS, JS), y **no ejecuta código del lado del servidor ni scripts de consola como `cliente.py`**.
