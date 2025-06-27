@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>README - PFO2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>PFO 2: Sistema de Gestión de Tareas (API Flask + SQLite)</h1>
+
+    <p>
+      Este proyecto implementa una API REST básica con Flask para registrar
+      usuarios, iniciar sesión y mostrar una vista de tareas protegida. Incluye
+      autenticación básica y almacenamiento de usuarios con contraseñas
+      hasheadas usando SQLite.
+    </p>
+
+    <hr />
+
+    <h2>Funcionalidades del servidor</h2>
+
+    <ul>
+      <li>Registro de usuarios (<code>POST /registro</code>)</li>
+      <li>Inicio de sesión (<code>POST /login</code>)</li>
+      <li>Visualización de bienvenida (<code>GET /tareas</code>)</li>
+      <li>Contraseñas protegidas (hashed)</li>
+      <li>Verifica credenciales y permite acceso a las tareas</li>
+      <li>Base de datos persistente (SQLite)</li>
+      <li>
+        Ejemplos de registro guardados en la base de datos
+        <img
+          src="/screenshots/7.png"
+          alt="Captura de registros de usuarios con contraseñas hasheadas"
+        />
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>Funcionalidades del cliente</h2>
+
+    <ul>
+      <li>
+        Iniciar sesión con usuario y contraseña (<code>POST /login</code>)
+      </li>
+      <li>Registrarse si el login falla (<code>POST /registro</code>)</li>
+      <li>Ver tareas si el login fue exitoso (<code>GET /tareas</code>)</li>
+      <li>
+        Tiene un límite de 3 intentos fallidos de ingreso de contraseñas
+        incorrectas, luego cierra el cliente.
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>Demo / Documentación:</h2>
+
+    <p>
+      <a href="https://paezzanini.github.io/PFO2-ProgRedes/"
+        >Ver en GitHub Pages</a
+      >
+    </p>
+
+    <p>
+      Este proyecto implementa una aplicación de consola en Python que se
+      comunica con un servidor Flask (API REST). Por su naturaleza, no puede
+      desplegarse en GitHub Pages, ya que esta plataforma solo permite publicar
+      contenido estático (HTML, CSS, JS), y no ejecuta código del lado del
+      servidor ni scripts de consola como
+      <code>cliente.py</code>.
+    </p>
+
+    <p>
+      Por eso, la sección de GitHub Pages del repositorio fue utilizada
+      exclusivamente para alojar una documentación visual del proyecto,
+      incluyendo capturas de pantalla, flujos de uso y explicaciones de
+      endpoints.
+    </p>
+
+    <p>
+      Como alternativa real de despliegue para probar el servidor Flask, se
+      podría utilizar una plataforma como
+      <strong>Render</strong> (https://render.com), que sí permite publicar
+      aplicaciones Python con backend web. Allí podría alojarse
+      <code>servidor.py</code> y permitir que <code>cliente.py</code> interactúe
+      remotamente.
+    </p>
+
+    <hr />
+
+    <h2>Backlog de funcionalidades pendientes</h2>
+
+    <ul>
+      <li>
+        [X] Reorganizar la estructura del proyecto con carpetas (ej.
+        <code>/app</code>)
+      </li>
+      <li>
+        [X] Agregar confirmación de contraseña en el registro (validación
+        mínima)
+      </li>
+      <li>
+        [X] Mostrar una página HTML más personalizada en
+        <code>/tareas</code> (usuario logueado)
+      </li>
+      <li>[X] Documentar el uso del cliente en consola</li>
+      <li>[X] Revisar flujo en Error en el login: Credenciales inválidas</li>
+      <li>
+        [X] Limitar la cantidad a 3 la cantidad de intentos fallidos antes de
+        cerrar el cliente
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>Instalación y ejecución (Windows)</h2>
+
+    <h3>1. Clonar el repositorio</h3>
+
+    <p>
+      <code
+        >bash git clone https://github.com/paezzanini/PFO2-ProgRedes cd
+        PFO2-ProgRedes
+      </code>
+    </p>
+
+    <h3>2. Crear entorno virtual (opcional pero recomendado)</h3>
+
+    <p><code>bash python -m venv env env\Scripts\activate </code></p>
+
+    <h3>3. Instalar dependencias</h3>
+
+    <p><code>bash pip install -r requirements.txt </code></p>
+
+    <h3>4. Ejecutar el servidor Flask</h3>
+
+    <p><code>bash python servidor.py </code></p>
+
+    <h3>5. Ejecutar el cliente en consola en otra consola</h3>
+
+    <p><code>bash python cliente.py </code></p>
+
+    <h3>Ejemplos de Uso</h3>
+
+    <h4>Usuario no registrado y no acepto registrarme</h4>
+
+    <p>
+      <img
+        src="/screenshots/1.png"
+        alt="Usuario no registrado y no acepto registrarme"
+      />
+    </p>
+    <pre><code>
+        Usuario: fernando Contraseña: 123456
+        ❌ El usuario no existe. ¿Deseás registrarte? (s/n): n
+      </code></pre>
+
+    <h4>Usuario no registrado y acepto registrarme</h4>
+
+    <p>
+      <img
+        src="/screenshots/2.png"
+        alt="Usuario no registrado y acepto registrarme"
+      />
+    </p>
+    <pre><code>
+        Usuario: fernando Contraseña: 123456 
+        ❌ El usuario no existe. ¿Deseás
+        registrarte? (s/n): s 
+        Confirmá la contraseña: 123456 
+        ✅ Usuario registrado con éxito. Ahora podés iniciar sesión
+      </code></pre>
+
+    <p>
+      Se ejecuta nuevamente el cliente y ya permite loguearse con los datos de
+      registro ```
+    </p>
+
+    <h4>
+      Usuario registrado - Credenciales invalidas - Limita a 3 intentos fallidos
+      antes de cerrar el cliente
+    </h4>
+
+    <p>
+      <img
+        src="/screenshots/3.png"
+        alt="Usuario registrado y acepto registrarme"
+      />
+    </p>
+    <pre><code>
+        Usuario: fernando
+        Contraseña: 123465
+        ❌ Contraseña incorrecta.
+        Intento 1/3. Intente nuevamente.
+        Contraseña: 1234
+        ❌ Contraseña incorrecta.
+        Intento 2/3. Intente nuevamente.
+        Contraseña: 143
+        ❌ Contraseña incorrecta.
+        ❌ Demasiados intentos fallidos. Cerrando.
+      </code></pre>
+
+    <h4>Usuario registrado - login exitoso</h4>
+
+    <p>
+      <img
+        src="/screenshots/4.png"
+        alt="Usuario registrado y acepto registrarme"
+      />
+    </p>
+    <pre><code>
+        Usuario: fernando
+        Contraseña: 123456
+        ✅ ¡Login exitoso!
+
+        TAREAS:
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Tareas&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Bienvenido, fernando&lt;/h1&gt;
+            &lt;p&gt;Acá vas a ver tus tareas (¡próximamente!).&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+
+    <h4>Usuario no registrado confirmacion de pass erronea</h4>
+
+    <p>
+      <img
+        src="/screenshots/5.png"
+        alt="Usuario registrado y acepto registrarme"
+      />
+    </p>
+    <pre><code>
+        Usuario: fernando1
+        Contraseña: 12345 
+        ❌ El usuario no existe.
+        ¿Deseás registrarte? (s/n): s
+        Confirmá la contraseña: 1234 
+        ❌ Las contraseñas no coinciden.
+    </code></pre>
+
+    <h4>Usuario no registrado confirmacion de pass correcta</h4>
+
+    <p>
+      <img
+        src="/screenshots/6.png"
+        alt="Usuario registrado y acepto registrarme"
+      />
+    </p>
+    <pre><code>
+      Usuario: fernando1
+      Contraseña: 12345
+      ❌ El usuario no existe.
+      ¿Deseás registrarte? (s/n): s
+      Confirmá la contraseña: 12345
+      ✅ Usuario registrado con éxito. Ahora podés iniciar sesión
+    </code></pre>
+
+    <hr />
+
+    <h2>Requisitos técnicos</h2>
+
+    <ul>
+      <li>Python 3.8 o superior</li>
+      <li>Flask</li>
+      <li>SQLite3</li>
+      <li>Werkzeug (para hashing de contraseñas)</li>
+    </ul>
+
+    <hr />
+
+    <h2>Respuestas conceptuales</h2>
+
+    <h3>¿Por qué hashear contraseñas?</h3>
+
+    <p>
+      Hashear contraseñas significa aplicar una función matemática que
+      transforma la contraseña original en una cadena irreconocible. Es un
+      proceso que no se puede revertir fácilmente, por eso se dice que es
+      unidireccional.
+    </p>
+
+    <p>
+      Esto se hace para no guardar contraseñas en texto plano (es decir, tal
+      como las escribe el usuario). Si alguien llegara a robar la base de datos,
+      no podría ver directamente las contraseñas reales, porque solo tendría los
+      valores ya hasheados.
+    </p>
+
+    <p>
+      Además, muchas veces se le agrega una “sal” (un valor aleatorio) antes de
+      aplicar el hash, para hacer más difícil que alguien use ataques
+      automáticos para adivinar las contraseñas.
+    </p>
+
+    <p>
+      En resumen, hashear sirve para proteger los datos de los usuarios y evitar
+      que, si alguien accede a la base, pueda ver las contraseñas reales.
+    </p>
+
+    <h3>Ventajas de usar SQLite</h3>
+
+    <p>
+      SQLite es una base de datos liviana que no necesita instalar un servidor
+      aparte ni configuraciones complicadas. Todo se guarda en un solo archivo
+      .db, lo que la hace muy práctica para proyectos chicos o medianos como
+      este.
+    </p>
+
+    <p>
+      Una de las ventajas más grandes es que es fácil de usar y muy rápida para
+      desarrollos locales o aplicaciones que no van a tener miles de usuarios al
+      mismo tiempo.
+    </p>
+
+    <p>
+      También es ideal para practicar o hacer trabajos prácticos, porque no
+      depende de conexiones externas ni servicios adicionales. Basta con
+      importar la librería en Python y ya se puede empezar a guardar datos.
+    </p>
+
+    <p>
+      En resumen, SQLite es simple, funciona bien para este tipo de proyectos
+      educativos o personales, y permite centrarse en la lógica del programa sin
+      preocuparse por configurar un sistema de base de datos más complejo.
+    </p>
+
+    <hr />
+  </body>
+</html>

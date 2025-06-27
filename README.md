@@ -27,6 +27,16 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 
 ---
 
+**Demo / Documentación:** [Ver en GitHub Pages](https://paezzanini.github.io/PFO2-ProgRedes/)
+
+Este proyecto implementa una aplicación de consola en Python que se comunica con un servidor Flask (API REST). Por su naturaleza, **no puede desplegarse en GitHub Pages**, ya que esta plataforma solo permite publicar contenido estático (HTML, CSS, JS), y **no ejecuta código del lado del servidor ni scripts de consola como `cliente.py`**.
+
+Por eso, la sección de GitHub Pages del repositorio fue utilizada exclusivamente para alojar una **documentación visual del proyecto**, incluyendo capturas de pantalla, flujos de uso y explicaciones de endpoints.
+
+Como alternativa real de despliegue para probar el servidor Flask, se podría utilizar una plataforma como **Render** (https://render.com), que sí permite publicar aplicaciones Python con backend web. Allí podría alojarse `servidor.py` y permitir que `cliente.py` interactúe remotamente.
+
+---
+
 ## Backlog de funcionalidades pendientes
 
 - [X] Reorganizar la estructura del proyecto con carpetas (ej. `/app`)
@@ -42,8 +52,8 @@ Este proyecto implementa una API REST básica con Flask para registrar usuarios,
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/tu-usuario/pfo2-gestion-tareas.git
-cd pfo2-gestion-tareas
+git clone https://github.com/paezzanini/PFO2-ProgRedes
+cd PFO2-ProgRedes
 ```
 
 ### 2. Crear entorno virtual (opcional pero recomendado)
@@ -67,17 +77,20 @@ python servidor.py
 python cliente.py
 ```
 
-#### Ejemplo de Uso
+#### Ejemplos de Uso
 
 ##### Usuario no registrado y no acepto registrarme
 ![Usuario no registrado y no acepto registrarme](/screenshots/1.png)
+```text
 Usuario: fernando
 Contraseña: 123456
 ❌ El usuario no existe.
 ¿Deseás registrarte? (s/n): n
+```
 
 ##### Usuario no registrado y acepto registrarme
 ![Usuario no registrado y acepto registrarme](/screenshots/2.png)
+```text
 Usuario: fernando
 Contraseña: 123456
 ❌ El usuario no existe.
@@ -86,9 +99,11 @@ Confirmá la contraseña: 123456
 ✅ Usuario registrado con éxito. Ahora podés iniciar sesión
 
 Se ejecuta nuevamente el cliente y ya permite loguearse con los datos de registro
+```
 
 ##### Usuario registrado - Credenciales invalidas - Limita a 3 intentos fallidos antes de cerrar el cliente
 ![Usuario registrado y acepto registrarme](/screenshots/3.png)
+```text
 Usuario: fernando
 Contraseña: 123465
 ❌ Contraseña incorrecta.
@@ -99,9 +114,11 @@ Intento 2/3. Intente nuevamente.
 Contraseña: 143
 ❌ Contraseña incorrecta.
 ❌ Demasiados intentos fallidos. Cerrando.
+```
 
 ##### Usuario registrado - login exitoso
 ![Usuario registrado y acepto registrarme](/screenshots/4.png)
+```text
 Usuario: fernando
 Contraseña: 123456
 ✅ ¡Login exitoso!
@@ -114,24 +131,29 @@ TAREAS:
     <p>Acá vas a ver tus tareas (¡próximamente!).</p>
 </body>
 </html>
+```
 
 ##### Usuario no registrado confirmacion de pass erronea
 ![Usuario registrado y acepto registrarme](/screenshots/5.png)
+```text
 Usuario: fernando1
 Contraseña: 12345
 ❌ El usuario no existe.
 ¿Deseás registrarte? (s/n): s
 Confirmá la contraseña: 1234
 ❌ Las contraseñas no coinciden.
+```
 
 ##### Usuario no registrado confirmacion de pass correcta
 ![Usuario registrado y acepto registrarme](/screenshots/6.png)
+```text
 Usuario: fernando1
 Contraseña: 12345
 ❌ El usuario no existe.
 ¿Deseás registrarte? (s/n): s
 Confirmá la contraseña: 12345
 ✅ Usuario registrado con éxito. Ahora podés iniciar sesión
+```
 
 ---
 
